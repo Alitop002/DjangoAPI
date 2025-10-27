@@ -41,18 +41,48 @@ class GetTeacherApiView(APIView):
         }
         return Response(data, status=status.HTTP_200_OK)
 
-# class GetProductApiView(APIView):
-#     def get(self, request):
-#         product = Product.objects.all()
-#         serializer = ProductSerializer(product, many=True)
-#         serializer.is_valid(raise_exception=True)
+class GetSingStudentApiView(APIView):
+    def get(self,request,student_id):
+        try:
+            student = Student.objects.get(id=student_id)
+        except Exception:
+            return Response({'message': "Student not fount", "status":False}, status=status.HTTP_404_NOT_FOUND)
+        serializer = StudentSerializers(student)
+        data = {
+            "message": "Student fetched successfully",
+            "status":True,
+            "data":serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
 
-#         data = {
-#             "message": "Products fetched successfully",
-#             "status":True,
-#             "data": serializer.data
-#         }
-
-#         return Response(data,status=status.HTTP_200_OK)
+        
+class GetSingCourseApiView(APIView):
+    def get(self,request,pk):
+        try:
+            course = Course.objects.get(id=pk)
+        except Exception:
+            return Response({'message': "Course not fount", "status":False}, status=status.HTTP_404_NOT_FOUND)
+        serializer = CourseSerializers(course)
+        data = {
+            "message": "Course fetched successfully",
+            "status":True,
+            "data":serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
     
+class GetSingTeacherApiView(APIView):
+    def get(self,request,pk):
+        try:
+            teacher = Teacher.objects.get(id=pk)
+        except Exception:
+            return Response({'message': "Teacher not fount", "status":False}, status=status.HTTP_404_NOT_FOUND)
+        serializer = TeacherSerialuzers(teacher)
+        data = {
+            "message": "Teacher fetched successfully",
+            "status":True,
+            "data":serializer.data
+        }
+        return Response(data, status=status.HTTP_200_OK)
+    
+
         
