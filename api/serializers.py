@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from .models import Product
 
 
 class CourseSerializers(serializers.Serializer):
@@ -16,3 +17,7 @@ class TeacherSerialuzers(serializers.Serializer):
     last_name = serializers.CharField(required=True)
     experience = serializers.IntegerField()
 
+class ProductSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Product
+        fields = "__all__"

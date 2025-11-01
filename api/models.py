@@ -16,3 +16,7 @@ class Teacher(models.Model):
     experience = models.IntegerField()
 
     
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField(null=True, blank=True)
