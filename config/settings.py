@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -10,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@y(x2dkdmj1=00uj*2rk%u+=deqo7)1#@+#qkmyf$*i7i6vciu'
+SECRET_KEY = 'django-insecure-k+45nlfflb8(^^^ckb)z4bw&gz*pr@77i&vqm(&d+18k%k-$g+'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,13 +34,21 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # local apps 
     'api',
-    # packages
-    'rest_framework',
-]
-JAZZMIN_SETTINGS = {
-
+    'drf_spectacular',
+    'drf_spectacular_sidecar',
+    
+] 
+REST_FRAMEWORK = {
+    # YOUR SETTINGS
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'My project API Views Test',
+    'DESCRIPTION': 'Alitop002',
+    'VERSION': '02.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    # OTHER SETTINGS
 }
 
 MIDDLEWARE = [

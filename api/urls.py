@@ -1,16 +1,11 @@
 from django.urls import path
-from .views import GetStudentApiView,GetCoursesApiView,GetTeacherApiView,GetSingStudentApiView,GetSingCourseApiView,GetSingTeacherApiView,GetProductApiView, GetSingApiView
+from api.views import CourseGetPostApiView, CourseDetailApiView, InstructorRetrieve, InstructorListCreateApiView
 
 urlpatterns = [
-    path('students/', GetStudentApiView.as_view()),
-    path('courses/', GetCoursesApiView.as_view()),
-    path('teachers/', GetTeacherApiView.as_view()),
-    path('student/<int:student_id>/', GetSingStudentApiView.as_view()),
-    path('course/<int:pk>/', GetSingCourseApiView.as_view()),
-    path('teacher/<int:pk>/', GetSingTeacherApiView.as_view()),
-    path('items/', GetProductApiView.as_view()),
-    path('items/<int:pk>/', GetSingApiView.as_view())
-
-
+    path('courses/', CourseGetPostApiView.as_view()),
+    path('course/<int:pk>/', CourseDetailApiView.as_view()),
+    path('instructors/', InstructorListCreateApiView.as_view()),
+    path('instructors/<int:pk>/', InstructorRetrieve.as_view()),
+    
 
 ]

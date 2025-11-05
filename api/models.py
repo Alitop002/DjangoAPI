@@ -1,22 +1,15 @@
 from django.db import models
 
-class Student(models.Model):
-    first_name = models.CharField(max_length=102)
-    last_name = models.CharField(max_length=102)
-    age = models.IntegerField()
 
 class Course(models.Model):
-    name = models.CharField(max_length=200)
-    course_price = models.DecimalField(max_digits=5, decimal_places=2)
-    course_Topics = models.TextField(null=True, blank=True)
-
-class Teacher(models.Model):
-    first_name = models.CharField(max_length=102)
-    last_name = models.CharField(max_length=102)
-    experience = models.IntegerField()
-
-    
-class Product(models.Model):
-    name = models.CharField(max_length=200)
+    title = models.CharField(max_length=150)
+    description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=2)
-    description = models.TextField(null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class Instructor(models.Model):
+    full_name = models.CharField(max_length=201)
+    email = models.EmailField(max_length=254, unique=True)
+    phone = models.CharField(max_length=102)
+    specialization = models.CharField(max_length=301)
+    joined_date = models.DateField(auto_now_add=True)
